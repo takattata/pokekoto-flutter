@@ -23,6 +23,13 @@ class _SettingListWidgetState extends State<SettingListWidget> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        backgroundColor: themeData.accentColor,
+        onPressed: () {
+          _onTapToDetail("");
+        },
+      ),
       body: ListView.builder(
         itemCount: _settingList.length,
         itemBuilder: (BuildContext context, int index) {
