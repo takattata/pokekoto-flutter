@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:pokekoto/theme.dart';
+import 'package:pokekoto/ui/setting_detail_page.dart';
 
 class SettingsPage extends StatelessWidget {
   @override
@@ -23,6 +25,13 @@ class _SettingListWidgetState extends State<SettingListWidget> {
   @override
   Widget build(BuildContext context) {
     return new Scaffold(
+      floatingActionButton: FloatingActionButton(
+        child: Icon(Icons.add),
+        backgroundColor: themeData.accentColor,
+        onPressed: () {
+          _onTapToDetail("");
+        },
+      ),
       body: ListView.builder(
         itemCount: _settingList.length,
         itemBuilder: (BuildContext context, int index) {
@@ -32,10 +41,18 @@ class _SettingListWidgetState extends State<SettingListWidget> {
               setState(() {
                 _id = index;
               });
+              _onTapToDetail(_settingList[index]);
             },
           );
         },
       ),
     );
+  }
+
+  void _onTapToDetail(String setting) {
+    Navigator.push(context, MaterialPageRoute<Null>(
+      settings: const RouteSettings(name: "/settingDetail"),
+      builder: (BuildContext context) => SettingDetailPage(setting),
+    ));
   }
 }

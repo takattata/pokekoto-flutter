@@ -1,7 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-final ThemeData themeData = new ThemeData(
+final ThemeData themeData = ThemeData(
   brightness: Brightness.light,
   cardColor: Colors.white,
   dividerColor: Colors.grey[300],
